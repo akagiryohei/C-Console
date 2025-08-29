@@ -6,8 +6,17 @@
         /// 新しいインスタンスを生成します。
         /// </summary>
         public Person()
+            :this("おはよう。")
         {
-            this.Statement = "どうも。";
+        }
+
+        /// <summary>
+        /// 新しいインスタンスを生成します。
+        /// </summary>
+        /// <param name="statement">発言内容の初期化を指定します。</param>
+        public Person(string statement)
+        {
+            this.Statement = statement;
         }
 
         /// <summary>
