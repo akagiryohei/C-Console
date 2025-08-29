@@ -14,13 +14,13 @@
         /// 発言内容を取得します。
         /// </summary>
         /// <returns>現在の発言を返します。</returns>
-        public string Statement { get; private set; }
+        public string Statement { get; protected set; }
 
         /// <summary>
         /// 独り言をつぶやきます。
         /// </summary>
         /// <param name="statement">つぶやく独り言を指定します。</param>
-        public void SpeakingToMyself(string statement)
+        public virtual void SpeakingToMyself(string statement)
         {
             this.Statement = statement;
         }
