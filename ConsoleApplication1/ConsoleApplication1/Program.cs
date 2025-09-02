@@ -4,40 +4,28 @@
 
     class Program
     {
-        /// <summary>
-        /// 入力引数なし、戻り値なしのデリゲート
-        /// </summary>
-        delegate void SomeDelegate1();
-
-        /// <summary>
-        /// int 型の入力引数、int型の戻り値のデリゲート
-        /// </summary>
-        /// <param name="i"></param>
-        delegate int SomeDelegate2(int i);
-
         static void Main(string[] args)
         {
-            SomeDelegate1 d1 = Func1;
-            d1();
+            var test = new EventTest();
+            test.NameChanged += OnNameChanged;
 
-            SomeDelegate2 d2 = Func2;
-            var d2_return = d2(3);
-            Console.WriteLine(d2_return + "が返ってきました。");
+            Console.WriteLine("処理をおこないます。");
+            test.Name = "Mike";
 
             Console.WriteLine("何かキーを押すと終了します。");
             Console.ReadKey();
         }
-
-        static void Func1()
+        
+        /// <summary>
+        /// NameChanged イベントハンドラ
+        /// </summary>
+        /// <param name="sender">イベント発行元</param>
+        /// <param name="e">イベント引数</param>
+        private static void OnNameChanged(object sender,EventArgs e)
         {
-            Console.WriteLine("Func1()が呼ばれました");
+            Console.WriteLine("NameChanged イベントハンドラが実行されました。");
         }
 
-        static int Func2(int x)
-        {
-            Console.WriteLine("Func2({0})が呼ばれました。", x);
 
-            return 2 * x;
-        }
     }
 }

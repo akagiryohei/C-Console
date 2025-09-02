@@ -1,0 +1,14 @@
+順番
+Program.cs
+test = new EventTest();
+test.Name = "Mike";
+これをすることでEvnetTestのNameを呼ぶことが可能
+
+EventTest.cs
+public string Name
+これのset側が動く
+1.メンバ変数の_nameに文字列を入れる
+2.RaiseNameChanged（）の呼び出し
+→h = this.NameChanged;が入ってる
+3.h(this.EventArgs.Empty);
+→これはProgram.csのOnNameChangedをメソッドとして呼び出せてる状態
