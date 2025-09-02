@@ -9,10 +9,17 @@
         {
             var values = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             // 比較対象とする値を記憶させる
-            _comparedValue = 5;
+            var comparedValue = 5;
+
+            // 匿名関数による比較判定基準
+            Func<int, bool> predicate = delegate(int x)
+            {
+                // Main()メソッドのスコープにある変数も使える
+                return x < comparedValue;
+            };
             // 比較対象より小さい要素数を数える
-            var count = Count<int>(values, IsLessThanValue);
-            Console.WriteLine("values の中で判断基準を満たす要素は" + count + "個あります。");
+            var count = Count<int>(values, predicate);
+            Console.WriteLine("valuesの中で判定基準を満たす要素は" + count + "個あります。");
 
             Console.WriteLine("何かキーを押すと終了します。");
             Console.ReadKey();
@@ -35,21 +42,5 @@
             }
             return count;
         }
-
-        /// <summary>
-        /// 比較対象とする値を保持します。
-        /// </summary>
-        private static int _comparedValue;
-
-        /// <summary>
-        /// ある値より小さいかどうか判断します。
-        /// </summary>
-        /// <param name="x">判定対象の数値を指定します。</param>
-        /// <returns>指定された数値が５より小さい場合にtrueを返します。</returns>
-        private static bool IsLessThanValue(int x)
-        {
-            return x < _comparedValue;
-        }
-
     }
 }
